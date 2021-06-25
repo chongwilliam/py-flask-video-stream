@@ -22,7 +22,7 @@ from flask import request
 LOG = logging.getLogger(__name__)
 app = Flask(__name__)
 
-VIDEO_PATH = '/video'
+VIDEO_PATH = '/cat_2x2.mp4'
 
 MB = 1 << 20
 BUFF_SIZE = 10 * MB
@@ -88,11 +88,12 @@ def get_range(request):
     
 @app.route(VIDEO_PATH)
 def video():
-    path = 'videos/movie.mp4'
+    path = 'videos/cat_2x2.mp4'
 #    path = 'demo.mp4'
 
-    start, end = get_range(request)
-    return partial_response(path, start, end)
+    # start, end = get_range(request)
+    # return partial_response(path, start, end)
+    return send_file(path, as_attachment=True)
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
