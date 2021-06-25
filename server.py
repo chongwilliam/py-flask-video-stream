@@ -22,7 +22,7 @@ from flask import request
 LOG = logging.getLogger(__name__)
 app = Flask(__name__)
 
-VIDEO_PATH = '/cat_2x2.mp4'
+VIDEO_PATH = '/o1k.mp4'
 
 MB = 1 << 20
 BUFF_SIZE = 10 * MB
@@ -88,7 +88,7 @@ def get_range(request):
     
 @app.route(VIDEO_PATH)
 def video():
-    path = 'videos/cat_2x2.mp4'
+    path = 'videos/o1k.mp4'
 #    path = 'demo.mp4'
 
     # start, end = get_range(request)
@@ -97,9 +97,9 @@ def video():
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
-    HOST = '0.0.0.0'
+    HOST = 'localhost'
     http_server = HTTPServer(WSGIContainer(app))
-    http_server.listen(8080)
+    http_server.listen(5000)
     IOLoop.instance().start()
 
     # Standalone
