@@ -23,6 +23,7 @@ LOG = logging.getLogger(__name__)
 app = Flask(__name__)
 
 VIDEO_PATH = '/o1k.mp4'
+IMAGE_PATH = '/o1k_2x1.jpg'
 
 MB = 1 << 20
 BUFF_SIZE = 10 * MB
@@ -93,6 +94,11 @@ def video():
 
     # start, end = get_range(request)
     # return partial_response(path, start, end)
+    return send_file(path, as_attachment=True)
+    
+@app.route(IMAGE_PATH)
+def image():
+    path = 'images/o1k_2x1.jpg'
     return send_file(path, as_attachment=True)
 
 if __name__ == '__main__':
